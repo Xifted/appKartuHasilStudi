@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
+#include <string.h>
+
+#define strcasecmp _stricmp
 
 COORD coord = { 0, 0 };
 int nmr;
@@ -10,7 +13,7 @@ int sks[7];
 char grade[7][3];
 float mutu[7];
 float SxM[7];
-float totalSKS = 0;
+int totalSKS = 0;
 float totalSxM = 0;
 float IPS = 0;
 
@@ -36,40 +39,27 @@ int main() {
         gotoxy(33, 3 + nmr); scanf_s("%s", &grade[nmr], 3);
 
         // Perhitungan Mutu
-        if (grade[nmr][0] == 'A') {
+        if (strcasecmp(grade[nmr], "A") == 0) {
             mutu[nmr] = 4.0;
-
-            if (grade[nmr][1] == '-') {
-                mutu[nmr] = 3.7;
-            }
-        }
-        else if (grade[nmr][0] == 'B') {
+        }else if (strcasecmp(grade[nmr], "A-") == 0) {
+            mutu[nmr] = 3.7;
+        }else if (strcasecmp(grade[nmr], "B+") == 0) {
+            mutu[nmr] = 3.3;
+        }else if (strcasecmp(grade[nmr], "B") == 0) {
             mutu[nmr] = 3.0;
-
-            if (grade[nmr][1] == '+') {
-                mutu[nmr] = 3.3;
-            }
-            else if (grade[nmr][1] == '-') {
-                mutu[nmr] = 2.7;
-            }
-        }
-        else if (grade[nmr][0] == 'C') {
+        }else if (strcasecmp(grade[nmr], "B-") == 0) {
+            mutu[nmr] = 2.7;
+        }else if (strcasecmp(grade[nmr], "C+") == 0) {
+            mutu[nmr] = 2.3;
+        }else if (strcasecmp(grade[nmr], "C") == 0) {
             mutu[nmr] = 2.0;
-
-            if (grade[nmr][1] == '+') {
-                mutu[nmr] = 2.3;
-            }
-            else if (grade[nmr][1] == '-') {
-                mutu[nmr] = 1.7;
-            }
-        }
-        else if (grade[nmr][0] == 'D') {
+        }else if (strcasecmp(grade[nmr], "C-") == 0) {
+            mutu[nmr] = 1.7;
+        }else if (strcasecmp(grade[nmr], "D") == 0) {
             mutu[nmr] = 1.0;
-        }
-        else if (grade[nmr][0] == 'E') {
+        }else if (strcasecmp(grade[nmr], "E") == 0) {
             mutu[nmr] = 0;
-        }
-        else {
+        }else {
             printf("INVALID");
         }
 
@@ -85,15 +75,15 @@ int main() {
 
     printf("\n------------------------------------------------------");
     printf("\nTotal");
-    gotoxy(27, 12); printf("%.2f", totalSKS);
+    gotoxy(27, 12); printf("%d", totalSKS);
     gotoxy(48, 12); printf("%.2f", totalSxM);
-
+    printf("\n------------------------------------------------------\n");
     // Perhitungan IPS
     if (totalSKS != 0) {
         IPS = totalSxM / totalSKS;
     }
 
-    gotoxy(45, 13); printf("IPS: %.2f", IPS);
+    gotoxy(44, 14); printf("IPS: %.2f", IPS);
     printf("\n------------------------------------------------------");
 
     return 0;
