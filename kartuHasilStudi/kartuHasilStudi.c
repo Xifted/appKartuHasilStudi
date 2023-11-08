@@ -33,8 +33,8 @@ int main() {
         gotoxy(0, 3 + nmr); printf("%d.", nmr);
 
         // Input data
-        gotoxy(7, 3 + nmr); scanf_s("%s", kodeMK[nmr], 10);
-        gotoxy(16, 3 + nmr); scanf_s("%s", namaMK[nmr], 30);
+        gotoxy(6, 3 + nmr); scanf_s("%s", &kodeMK[nmr], 10);
+        gotoxy(16, 3 + nmr); scanf_s("%s", &namaMK[nmr], 30);
         gotoxy(27, 3 + nmr); scanf_s("%d", &sks[nmr]);
         gotoxy(33, 3 + nmr); scanf_s("%s", &grade[nmr], 3);
 
