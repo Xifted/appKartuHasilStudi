@@ -61,6 +61,7 @@ int main() {
             mutu[nmr] = 0;
         }else {
             printf("INVALID");
+            mutu[nmr] = 0;
         }
 
         // Perhitungan SxM, total SKS, total SxM
